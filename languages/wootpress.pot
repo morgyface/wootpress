@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Twenty Ten 1.0\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/twentyten\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wootpress\n"
 "POT-Creation-Date: 2010-06-15 16:21+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -134,7 +134,7 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#. #-#-#-#-#  twentyten.pot (Twenty Ten 1.0)  #-#-#-#-#
+#. #-#-#-#-#  wootpress.pot (Twenty Ten 1.0)  #-#-#-#-#
 #. Theme URI of the plugin/theme
 #: footer.php:33
 msgid "http://wordpress.org/"
