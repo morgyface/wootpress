@@ -1,0 +1,11 @@
+/*
+Theme Name: Wootpress
+Theme URI: http://bitofsomething.co.uk
+Description: A stripped back WordPress theme which works with Bootstrap
+Version: 1.0
+Author: Dan Morgan
+Author URI: http://alittlebitofsomething.co.uk
+Tags: bootstrap, naked, clean, basic
+*/
+
+@import "css/layout.css";

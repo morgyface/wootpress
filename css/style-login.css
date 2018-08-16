@@ -1,0 +1,3 @@
+body.login { background-color: #F1F1F1; }
+
+body.login div#login h1 a { background-image: url(../images/wordpress.png); -webkit-background-size: auto 84px; background-size: auto 84px; width: 160px; height: 84px; }

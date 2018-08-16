@@ -1,0 +1,14 @@
+$height: 84px;
+@mixin background-size($w, $h) {
+  -webkit-background-size: $w $h;
+          background-size: $w $h;
+}
+body.login {
+  background-color: #F1F1F1; // Default colour
+  div#login h1 a {
+  	background-image: url(../images/wordpress.png);
+  	@include background-size(auto, $height);
+  	width: 160px;
+  	height: $height;
+  }
+}
