@@ -15,8 +15,8 @@ get_header(); ?>
     <p class="entry-date"><?php echo get_the_date('l jS F Y'); ?></p>
     <?php the_content(); ?>
 
-    <?php previous_post_link( '%link', '' . _x( '&larr;', 'Previous post link', 'twentyten' ) . ' %title' ); ?>
-    <?php next_post_link( '%link', '%title ' . _x( '&rarr;', 'Next post link', 'twentyten' ) . '' ); ?>
+    <?php previous_post_link( '%link', '' . _x( '&larr;', 'Previous post link', 'wootpress' ) . ' %title' ); ?>
+    <?php next_post_link( '%link', '%title ' . _x( '&rarr;', 'Next post link', 'wootpress' ) . '' ); ?>
 
 <?php endwhile; // end of the loop. ?>
 

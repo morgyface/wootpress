@@ -1,37 +1,6 @@
 <?php
 /**
- * TwentyTen functions and definitions
- *
- * Sets up the theme and provides some helper functions. Some helper functions
- * are used in the theme as custom template tags. Others are attached to action and
- * filter hooks in WordPress to change core functionality.
- *
- * The first function, twentyten_setup(), sets up the theme by registering support
- * for various features in WordPress, such as post thumbnails, navigation menus, and the like.
- *
- * When using a child theme (see http://codex.wordpress.org/Theme_Development and
- * http://codex.wordpress.org/Child_Themes), you can override certain functions
- * (those wrapped in a function_exists() call) by defining them first in your child theme's
- * functions.php file. The child theme's functions.php file is included before the parent
- * theme's file, so the child theme functions would be used.
- *
- * Functions that are not pluggable (not wrapped in function_exists()) are instead attached
- * to a filter or action hook. The hook can be removed by using remove_action() or
- * remove_filter() and you can attach your own function to the hook.
- *
- * We can remove the parent theme's hook only after it is attached, which means we need to
- * wait until setting up the child theme:
- *
- * <code>
- * add_action( 'after_setup_theme', 'my_child_theme_setup' );
- * function my_child_theme_setup() {
- *     // We are providing our own filter for excerpt_length (or using the unfiltered value)
- *     remove_filter( 'excerpt_length', 'twentyten_excerpt_length' );
- *     ...
- * }
- * </code>
- *
- * For more information on hooks, actions, and filters, see http://codex.wordpress.org/Plugin_API.
+ * Wootpress functions and definitions
  *
  * @package WordPress
  * @subpackage Wootpress
@@ -47,10 +16,10 @@
 if ( ! isset( $content_width ) )
 	$content_width = 1140;
 
-/** Tell WordPress to run twentyten_setup() when the 'after_setup_theme' hook is run. */
-add_action( 'after_setup_theme', 'twentyten_setup' );
+/** Tell WordPress to run wootpress_setup() when the 'after_setup_theme' hook is run. */
+add_action( 'after_setup_theme', 'wootpress_setup' );
 
-if ( ! function_exists( 'twentyten_setup' ) ):
+if ( ! function_exists( 'wootpress_setup' ) ):
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -58,21 +27,19 @@ if ( ! function_exists( 'twentyten_setup' ) ):
  * before the init hook. The init hook is too late for some features, such as indicating
  * support post thumbnails.
  *
- * To override twentyten_setup() in a child theme, add your own twentyten_setup to your child theme's
+ * To override wootpress_setup() in a child theme, add your own wootpress_setup to your child theme's
  * functions.php file.
  *
  * @uses add_theme_support() To add support for post thumbnails and automatic feed links.
  * @uses register_nav_menus() To add support for navigation menus.
- * @uses add_custom_background() To add support for a custom background.
  * @uses add_editor_style() To style the visual editor.
  * @uses load_theme_textdomain() For translation/localization support.
- * @uses add_custom_image_header() To add support for a custom header.
  * @uses register_default_headers() To register the default custom header images provided with the theme.
  * @uses set_post_thumbnail_size() To set a custom post thumbnail size.
  *
  * @since Twenty Ten 1.0
  */
-function twentyten_setup() {
+function wootpress_setup() {
 
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
@@ -82,7 +49,7 @@ function twentyten_setup() {
 
 	// Make theme available for translation
 	// Translations can be filed in the /languages/ directory
-	load_theme_textdomain( 'twentyten', TEMPLATEPATH . '/languages' );
+	load_theme_textdomain( 'wootpress', TEMPLATEPATH . '/languages' );
 
 	$locale = get_locale();
 	$locale_file = TEMPLATEPATH . "/languages/$locale.php";
@@ -91,8 +58,8 @@ function twentyten_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => __( 'Primary Navigation', 'twentyten' ),
-		'footer' => __( 'Footer Navigation', 'twentyten' )
+		'primary' => __( 'Primary Navigation', 'wootpress' ),
+		'footer' => __( 'Footer Navigation', 'wootpress' )
 	) );
 }
 endif;
@@ -116,7 +83,7 @@ endif;
  * 	vertical bar, "|", as a separator in header.php.
  * @return string The new title, ready for the <title> tag.
  */
-function twentyten_filter_wp_title( $title, $separator ) {
+function wootpress_filter_wp_title( $title, $separator ) {
 	// Don't affect wp_title() calls in feeds.
 	if ( is_feed() )
 		return $title;
@@ -128,10 +95,10 @@ function twentyten_filter_wp_title( $title, $separator ) {
 
 	if ( is_search() ) {
 		// If we're a search, let's start over:
-		$title = sprintf( __( 'Search results for %s', 'twentyten' ), '"' . get_search_query() . '"' );
+		$title = sprintf( __( 'Search results for %s', 'wootpress' ), '"' . get_search_query() . '"' );
 		// Add a page number if we're on page 2 or more:
 		if ( $paged >= 2 )
-			$title .= " $separator " . sprintf( __( 'Page %s', 'twentyten' ), $paged );
+			$title .= " $separator " . sprintf( __( 'Page %s', 'wootpress' ), $paged );
 		// Add the site name to the end:
 		$title .= " $separator " . get_bloginfo( 'name', 'display' );
 		// We're done. Let's send the new title back to wp_title():
@@ -148,12 +115,12 @@ function twentyten_filter_wp_title( $title, $separator ) {
 
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 )
-		$title .= " $separator " . sprintf( __( 'Page %s', 'twentyten' ), max( $paged, $page ) );
+		$title .= " $separator " . sprintf( __( 'Page %s', 'wootpress' ), max( $paged, $page ) );
 
 	// Return the new title to wp_title():
 	return $title;
 }
-add_filter( 'wp_title', 'twentyten_filter_wp_title', 10, 2 );
+add_filter( 'wp_title', 'wootpress_filter_wp_title', 10, 2 );
 
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
@@ -163,22 +130,22 @@ add_filter( 'wp_title', 'twentyten_filter_wp_title', 10, 2 );
  *
  * @since Twenty Ten 1.0
  */
-function twentyten_page_menu_args( $args ) {
+function wootpress_page_menu_args( $args ) {
 	$args['show_home'] = true;
 	return $args;
 }
-add_filter( 'wp_page_menu_args', 'twentyten_page_menu_args' );
+add_filter( 'wp_page_menu_args', 'wootpress_page_menu_args' );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function twentyten_widgets_init() {
+function wootpress_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'twentyten' ),
+		'name'          => __( 'Sidebar', 'wootpress' ),
 		'id'            => 'sidebar-1',
-		'description'   => __( 'Add widgets here to appear in your sidebar.', 'twentyten' ),
+		'description'   => __( 'Add widgets here to appear in your sidebar.', 'wootpress' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -186,9 +153,9 @@ function twentyten_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Footer 1', 'twentyten' ),
+		'name'          => __( 'Footer 1', 'wootpress' ),
 		'id'            => 'sidebar-2',
-		'description'   => __( 'Add widgets here to appear in your footer.', 'twentyten' ),
+		'description'   => __( 'Add widgets here to appear in your footer.', 'wootpress' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -196,16 +163,16 @@ function twentyten_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Footer 2', 'twentyten' ),
+		'name'          => __( 'Footer 2', 'wootpress' ),
 		'id'            => 'sidebar-3',
-		'description'   => __( 'Add widgets here to appear in your footer.', 'twentyten' ),
+		'description'   => __( 'Add widgets here to appear in your footer.', 'wootpress' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
 }
-add_action( 'widgets_init', 'twentyten_widgets_init' );
+add_action( 'widgets_init', 'wootpress_widgets_init' );
 
 // This nugget allows you to have excerpts on pages as well as posts.
 add_post_type_support('page', 'excerpt');
