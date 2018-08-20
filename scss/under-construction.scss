@@ -1,7 +1,10 @@
 $coming-soon-width: 200px;
 $coming-soon-height: 120px;
 body#under-construction {
-  width: 100%; height: 100%; margin: 0; position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  position: absolute;
   background-color: #FFF;
   div#coming-soon {
     position: relative; top: 50%; left: 50%;
@@ -9,6 +12,10 @@ body#under-construction {
     height: $coming-soon-height;
     margin-left: $coming-soon-width / 2 - $coming-soon-width;
     margin-top: $coming-soon-height / 2 - $coming-soon-height;
-    img {display: block;}
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
   }
 }

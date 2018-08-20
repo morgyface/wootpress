@@ -10,7 +10,7 @@
 get_header(); ?>
 
 				<h1><?php
-					printf( __( 'Category Archives: %s', 'twentyten' ), '' . single_cat_title( '', false ) . '' );
+					printf( __( 'Category Archives: %s', 'wootpress' ), '' . single_cat_title( '', false ) . '' );
 				?></h1>
 				<?php
 					$category_description = category_description();
